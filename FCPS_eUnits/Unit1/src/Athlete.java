@@ -24,4 +24,9 @@ public class Athlete extends Robot{
         turnLeft();
         turnLeft();
     }
+    public void putAndMove()
+    {
+        putBeeper();
+        move();
+    }
 }
