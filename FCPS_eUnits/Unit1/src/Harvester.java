@@ -5,22 +5,34 @@
    {
       public Harvester(int x, int y)
       {
-         super(x, y, Display.EAST, 0);
+         super(x, y, Display.EAST, Display.INFINITY);
       }
       public Harvester()
       {
-         super(2, 2, Display.EAST, 0);
+         super(2, 2, Display.EAST,  Display.INFINITY);
       }
       public void workCorner()
       {
+         while(!nextToABeeper())
+         {
+            putBeeper();
+         } 
       }
       public void moveOneBlock()
       {
+         move();
       }
       public void turnToTheRight()
       {
+         turnLeft();
+         turnLeft();
+         turnLeft();
       }
       public void turnToTheNorth()
       {
+         while(!facingNorth())
+         {
+            turnLeft();
+         }
       }
    }
