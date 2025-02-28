@@ -1,10 +1,13 @@
 //Torbert, e-mail: smtorbert@fcps.edu
 //version 4.16.2003
 
-    public class Lab14
+import edu.fcps.karel2.Display;
+
+public class Lab14
    {
        public static void main(String[] args)
       {
+         Display.setSpeed(10);
          Swimmer weismuller = new Swimmer(2);
          Swimmer fraser = new Swimmer(4);
          Swimmer spitz = new Swimmer(6);
