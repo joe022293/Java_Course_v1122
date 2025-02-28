@@ -20,8 +20,11 @@ public class Lab10 {
         }
     }
     public static void main(String[] args) {
-        Display.openWorld("maps/maze3.map");
+        Display.openWorld("maps/maze2.map");
         Athlete p = new Athlete(1,1,Display.NORTH,Display.INFINITY);
         Lab10.followWallsRight(p);
+
+
+
     }
 }
