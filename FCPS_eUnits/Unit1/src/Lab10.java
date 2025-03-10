@@ -23,8 +23,5 @@ public class Lab10 {
         Display.openWorld("maps/maze2.map");
         Athlete p = new Athlete(1,1,Display.NORTH,Display.INFINITY);
         Lab10.followWallsRight(p);
-
-
-
     }
 }
