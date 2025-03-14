@@ -1,0 +1,24 @@
+{
+    "java.project.sourcePaths": [
+        "src/Lab18",
+        "src/Lab17",
+        "src/Lab15",
+        "src/Lab14",
+        "src/Lab12",
+        "src/Lab11",
+        "src/Lab10",
+        "src/Lab08",
+        "src/Lab07",
+        "src/Lab06",
+        "src/Lab05",
+        "src/Lab04",
+        "src/Lab03",
+        "src",
+        "src\\Lab00",
+        "src\\Lab01"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\github\\Java_Course_v1122\\FCPS_eUnits\\SetupFiles\\karel2_c.jar",
+        "c:\\github\\Java_Course_v1122\\FCPS_eUnits\\SetupFiles\\xercesImpl.jar"
+    ]
+}
