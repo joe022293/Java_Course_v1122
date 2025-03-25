@@ -1,39 +1,49 @@
 	//Name______________________________ Date_____________
+import com.sun.nio.sctp.PeerAddressChangeNotification;
    import edu.fcps.Turtle;
-    public class SquareTurtle extends Turtle
-   {
+      public class SquareTurtle extends Turtle 
+      {
       private double mySize;
    
    	//*************************constructors*************************
-       public SquareTurtle()
+      public SquareTurtle()
       {
          super();
          mySize = 50.0;
       }
-       public SquareTurtle(double n)
+      public SquareTurtle(double n)
       {
          super();
          mySize = n;
       }
-       public SquareTurtle(double x, double y, double h)
+      public SquareTurtle(double x, double y, double h)
       {
          super(x, y, h);
          mySize = 50.0;
       }
-       public SquareTurtle(double x, double y, double h, double n)
+      public SquareTurtle(double x, double y, double h, double n)
       {
          super(x, y, h);
          mySize = n;
       }
    
    	//************************methods*****************************
-       public void setSize(double n)
+      public void setSize(double n)
       {
          mySize = n;
       }
-       public void drawShape()
+      public void drawShape()
       {
-      
+         setPenDown(true);
+         forward(mySize);
+         turnLeft(90);
+         forward(mySize);
+         turnLeft(90);
+         forward(mySize);
+         turnLeft(90);
+         forward(mySize);
+         turnLeft(90);
+
          /************************/
       	/*                      */
       	/* Your code goes here. */

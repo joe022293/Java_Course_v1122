@@ -53,35 +53,50 @@
       }
        public static void task_04()	
       { //go to the wall, pick up all the beepers (max one per pile)
+         int n=0;
          Robot temp = new Robot(1, 4, Display.EAST, 0);
+         if (temp.nextToABeeper()) 
+         { 
+            n++;
+            temp.pickBeeper();
+         }
          while (temp.frontIsClear()) 
          { 
             if (temp.nextToABeeper()) 
             { 
+               n++;
                temp.pickBeeper();
             }
             temp.move();
             if (temp.nextToABeeper()) 
             { 
+               n++;
                temp.pickBeeper();
             }
          }
+         System.out.print("第四行:");
+         System.out.println(n);
       }
        public static void task_05()	
       { //go to the wall, pick up all the beepers
          Robot temp = new Robot(1, 5, Display.EAST, 0);
+         int n=0;
          while (temp.frontIsClear()) 
          {  
             while (temp.nextToABeeper()) 
             { 
                temp.pickBeeper();
+               n++;
             }
             temp.move();
             while (temp.nextToABeeper()) 
             { 
                temp.pickBeeper();
+               n++;
             }
          }
+         System.out.print("第五行:");
+         System.out.println(n);
       }
        public static void task_06()
       { //go to the end of the row of beepers, there is one gap

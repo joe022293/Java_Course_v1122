@@ -1,106 +1,127 @@
 import edu.fcps.karel2.Display;
+
 public class Lab10EX {
     public static void followWallsRight (Athlete arg)
     {
         while (true) 
         { 
             int k=0;
+            int check=0;
             if(arg.rightIsClear() & arg.frontIsClear() & arg.leftIsClear())
             {
                 k=3;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnRight();
                 arg.move();
             }
             else if(arg.rightIsClear() & arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnRight();
                 arg.move();
             }
             else if(arg.rightIsClear() & !arg.frontIsClear() & arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnRight();
                 arg.move();
             }
             else if(arg.rightIsClear() & !arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnRight();
                 arg.move();
             }
             else if(!arg.rightIsClear() & arg.frontIsClear() & arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.move();
                
             }
             else if(!arg.rightIsClear() & arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.move();
                 
             }
             else if(!arg.rightIsClear() & !arg.frontIsClear() & arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnLeft();
                 arg.move();
             }
             else if(!arg.rightIsClear() & !arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=0;
-                Lab10EX.tmp(arg, k);
                 arg.turnAround();
                 arg.move();
             }
-            if(arg.getX()==7)
-                break;
+            if(check==1 && arg.nextToABeeper())
+            {
+                int beeperNum=0;
+                while(arg.nextToABeeper())
+                {
+                    arg.pickBeeper();
+                    beeperNum=beeperNum+1;
+                }
+                if(beeperNum==1)
+                {
+                    arg.putBeeper();
+                    break;
+                }
+                else
+                {
+                    for(int i=0;i<beeperNum;i++)
+                        arg.putBeeper();
+                }
+            }
+            else
+                check=0;
         }
     }
     public static void followWallsLeft (Athlete arg)
     {
+        int check=0;
         while (true) 
         { 
             int k=0;
             if(arg.rightIsClear() & arg.frontIsClear() & arg.leftIsClear())
             {
                 k=3;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnLeft();
                 arg.move();
             }
             else if(arg.rightIsClear() & arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.move();
             }
             else if(arg.rightIsClear() & !arg.frontIsClear() & arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnLeft();
                 arg.move();
             }
             else if(arg.rightIsClear() & !arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnRight();
                 arg.move();
             }
             else if(!arg.rightIsClear() & arg.frontIsClear() & arg.leftIsClear())
             {
                 k=2;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnLeft();
                 arg.move();
                
@@ -108,29 +129,48 @@ public class Lab10EX {
             else if(!arg.rightIsClear() & arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.move();
-                
             }
             else if(!arg.rightIsClear() & !arg.frontIsClear() & arg.leftIsClear())
             {
                 k=1;
-                Lab10EX.tmp(arg, k);
+                check=Lab10EX.tmp(arg, k);
                 arg.turnLeft();
                 arg.move();
             }
             else if(!arg.rightIsClear() & !arg.frontIsClear() & !arg.leftIsClear())
             {
                 k=0;
-                Lab10EX.tmp(arg, k);
+                //check=Lab10EX.tmp(arg, k);
                 arg.turnAround();
                 arg.move();
             }
-            if(arg.getX()==7)
-                break;
+            if(check==1 && arg.nextToABeeper())
+            {
+                int beeperNum=0;
+                while(arg.nextToABeeper())
+                {
+                    arg.pickBeeper();
+                    beeperNum=beeperNum+1;
+                }
+                arg.putBeeper();
+                if(beeperNum==1)
+                {
+                    arg.putBeeper();
+                    break;
+                }
+                else
+                {
+                    for(int i=0;i<beeperNum;i++)
+                        arg.putBeeper();
+                }
+            }
+            else
+                check=0;
         }
     }
-    public static void tmp(Athlete arg,int k)
+    public static int tmp(Athlete arg,int k)
     {
         if(!arg.nextToABeeper())
         {
@@ -138,13 +178,13 @@ public class Lab10EX {
             {
                 arg.putBeeper();
             }
-            k=0;
+            return 1;
         }
         else
         {
             arg.pickBeeper();
-            k=0;
-        }
+            return 0;
+       }
     }
 
     public static void main(String[] args) 
