@@ -7,7 +7,7 @@ public class Panel00 extends JPanel
         g.setColor(Color.BLUE);
         g.fillRect(50, 50, 300, 125);
         g.setFont(new Font("Serif", Font.BOLD, 50));
-        g.setColor(new Color(150, 150, 0));
+        g.setColor(new Color(0, 0, 0));
         g.drawString("Hello World", 50, 150);
     }
 }
