@@ -1,8 +1,8 @@
    //Name:    Date:
-   import javax.swing.*;
    import java.awt.*;
    import java.awt.event.*;
    import java.awt.image.*;
+   import javax.swing.*;
     public class PrizePanel extends JPanel
    {
       private static final int FRAME = 400;
@@ -12,30 +12,54 @@
       private Ball ball;
       private Polkadot pd;
       private Timer t; 
+      private double hits;
 		//constructor   
        public PrizePanel()
       {
-         
+         myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
+         myBuffer = myImage.getGraphics();
+         myBuffer.setColor(BACKGROUND);
+         myBuffer.fillRect(0, 0, FRAME,FRAME);
+         ball = new Ball();
+         pd = new Polkadot();
+
+         t = new Timer(5, new Listener());
+         t.start();
       }
        public void paintComponent(Graphics g)
       {
-      
+         g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
       }
        private class Listener implements ActionListener
       {
           public void actionPerformed(ActionEvent e)
          {
-           
+            myBuffer.setColor(BACKGROUND);
+            myBuffer.fillRect(0,0,FRAME,FRAME);
+
+            ball.move(FRAME, FRAME);
+            collide(ball, pd);
+
+            ball.draw(myBuffer);
+            pd.draw(myBuffer);
+
+            myBuffer.setColor(Color.BLACK);
+            myBuffer.setFont(new Font("Monospaced", Font.BOLD, 24));
+            myBuffer.drawString("Count: " + hits, FRAME - 150, 25);
+            repaint();
          }
       }   
        private void collide(Ball b, Polkadot pd)
       {
-        double d = distance(  /* 4 arguments */  );  
-		
-		  
+         double d = distance(b.getX(),b.getY(),pd.getX(),pd.getY());  
+         if(d<b.getRadius() || d<pd.getRadius())
+         {
+            hits++;
+            pd.jump(FRAME, FRAME);
+         }
       }
        private double distance(double x1, double y1, double x2, double y2)
       {
-         return  	 // enter the calculation here.
+         return Math.sqrt(Math.pow((x1-x2),2)+Math.pow((y1-y2),2));
       }
    }
