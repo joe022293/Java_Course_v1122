@@ -42,14 +42,27 @@
        public void move(double rightEdge, double bottomEdge)
       {
          setX(getX()+ dx);                    // x = x + dx
-        
+         setY(getY()+ dy);  
         // check for left & right edge bounces
          if(getX() >= rightEdge - getRadius())     //hits the right edge
          {
             setX(rightEdge - getRadius());
             dx = dx * -1; 
          }
-         else if 
-         
+         else if(getX() <= 0 + getRadius())
+         {
+            setX(0 + getRadius());
+            dx = dx * -1; 
+         }
+         else if(getY() >= bottomEdge - getRadius())
+         {
+            setY(bottomEdge - getRadius());
+            dy = dy * -1; 
+         }
+         else if(getY() <= 0 + getRadius())
+         {
+            setY(0 + getRadius());
+            dy = dy * -1; 
+         }
       }
    }
