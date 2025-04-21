@@ -3,24 +3,26 @@
 
 import edu.fcps.karel2.Display;
 
-public class Pirate extends Athlete {
-   public Pirate() {
+public class Pirate_r extends Athlete {
+
+   public Pirate_r() {
       super(1, 1, Display.EAST, 0);
    }
 
    public void approachPile() {
-      while (!nextToABeeper()) {
+      if (!nextToABeeper()) {
          move();
+         approachPile();
       }
    }
 
    public int numOfBeepersInPile() {
-      int i = 0;
-      while (nextToABeeper()) {
+      if (nextToABeeper()) {
          pickBeeper();
-         i++;
+         return 1 + numOfBeepersInPile();//1+1+1+1+0
+      } else {
+         return 0;
       }
-      return i;
    }
 
    public void turnAppropriately(int beepers) {

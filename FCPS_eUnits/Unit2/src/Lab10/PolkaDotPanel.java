@@ -1,10 +1,10 @@
    //Torbert, e-mail: mr@torbert.com, website: www.mr.torbert.com
 	//version 6.17.2003
 
-   import javax.swing.*;
    import java.awt.*;
    import java.awt.event.*;
    import java.awt.image.*;
+   import javax.swing.*;
     public class PolkaDotPanel extends JPanel
    {
    //constants
@@ -15,6 +15,7 @@
       private Graphics myBuffer;
       private Timer t;
       private Polkadot pd;
+      private Polkadot pd2;
       private int xPos, yPos;
        public PolkaDotPanel()
       {
@@ -23,6 +24,7 @@
          myBuffer.setColor(BACKGROUND);
          myBuffer.fillRect(0, 0, FRAME, FRAME);
          pd = new Polkadot();
+         pd2 = new Polkadot(200,200,35,Color.blue);
          t = new Timer(1000, new Listener());
          t.start();
       }
@@ -34,11 +36,15 @@
       {
           public void actionPerformed(ActionEvent e)
          {
+            myBuffer.setColor(BACKGROUND);
+            myBuffer.fillRect(0, 0, FRAME, FRAME);
          /**************************
             your code goes here
          **************************/
             pd.jump(FRAME, FRAME);
             pd.draw(myBuffer);
+            pd2.jump(FRAME,FRAME);
+            pd2.draw(myBuffer);
             
             repaint();
          }
