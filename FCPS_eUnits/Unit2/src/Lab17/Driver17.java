@@ -1,6 +1,7 @@
 	// Torbert, 7.20.06
 
    import javax.swing.JFrame;
+   import javax.swing.SwingUtilities;
     public class Driver17
    {
        public static void main(String[] args)
@@ -10,9 +11,10 @@
          frame.setLocation(0, 0);
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          PrizePanel p = new PrizePanel();
+         
          frame.setContentPane(p);
          p.requestFocus();
          frame.setVisible(true);
-         
+         SwingUtilities.invokeLater(() -> p.requestFocusInWindow());
       }
    }

@@ -31,6 +31,7 @@
          PolygonTurtle_star a = new PolygonTurtle_star(100,5);
          a.setColor(Color.BLUE);
          a.setThickness(5);
+         a.setNumberOfCircle(1);
          a.setSides(6);
          a.drawShape();
       }

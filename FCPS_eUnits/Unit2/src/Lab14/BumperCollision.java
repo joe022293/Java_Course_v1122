@@ -47,15 +47,15 @@
          nearestY = bumper.getY();
          
          // now work around the edge of the bumper looking for a closer point
-         for (int x = bumper.getX(); x <= bumper.getX() + bumper.getXWidth(); x++)  // top & bottom edges
+         for (int x = bumper.getX(); x <= bumper.getX() + bumper.getWidth(); x++)  // top & bottom edges
          {
             updateIfCloser(x, bumper.getY(), ball);
-            updateIfCloser(x, bumper.getY() + bumper.getYWidth(), ball);
+            updateIfCloser(x, bumper.getY() + bumper.getHeight(), ball);
          }
-         for (int y = bumper.getY(); y <= bumper.getY() + bumper.getYWidth(); y++)  // right & left edges
+         for (int y = bumper.getY(); y <= bumper.getY() + bumper.getHeight(); y++)  // right & left edges
          {
             updateIfCloser(bumper.getX(), y, ball);
-            updateIfCloser(bumper.getX() + bumper.getXWidth(), y, ball);
+            updateIfCloser(bumper.getX() + bumper.getWidth(), y, ball);
          }
       }
          

@@ -17,7 +17,8 @@
         "src\\Lab00",
         "src\\Lab01",
         "src\\Lab02",
-        "src\\Lab09"
+        "src\\Lab09",
+        "src\\Lab16"
     ],
     "java.project.referencedLibraries": [
         "c:\\github\\Java_Course_v1122\\FCPS_eUnits\\SetupFiles\\karel2_c.jar",

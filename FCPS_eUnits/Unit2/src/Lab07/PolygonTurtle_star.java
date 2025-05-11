@@ -1,10 +1,11 @@
 	//Name______________________________ Date_____________
-   import edu.fcps.Turtle;
+import edu.fcps.Turtle;
 import javax.print.attribute.standard.Sides;
     public class PolygonTurtle_star extends Turtle
    {
       private double mySize;
       private int mySides;
+      private int NumberOfCircle = 1;
        public PolygonTurtle_star()
       {
          super();
@@ -30,15 +31,16 @@ import javax.print.attribute.standard.Sides;
       {
          mySides = s;
       }
+      public void setNumberOfCircle(int n)
+      {
+         NumberOfCircle = n;
+      }
        public void drawShape()
       {
-         int d = (int)(mySides-5)/2+2;
-         System.err.println(d);
-         float angle = 180-180*(mySides-d*2)/mySides;
-         for(int i=0;i<mySides;i++)
-         {
+         float degree = NumberOfCircle*360/mySides/2;
+         for (int i = 0; i < mySides; i++) {
             forward(mySize);
-            turnLeft(angle);
+            turnLeft(180-degree);
          }
       }
    }
